@@ -1,36 +1,84 @@
 var connection = require('connection.js')
 
-var orm = {
+//function change object to form or sql:
+function sequl(data){
+//create array to pass in 
+	var array = [];
+
+	 for(var key in data){
+
+	 	var value = data.key;
+//check whether should be '' around value
+// e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
+ // e.g. {sleepy: true} => ["sleepy=true"]
+
+	 	if (typeof value === "string" && value.indexOf(" ") >=0){
+	 		value = "'" + value + "'"
+	 	}
+	 	array.push(`${key} = ${value}`)
+	 }
+
+}
+
+// //generate ? for create
+// 	function 
+
+	var orm = {
 
 //method that select all data
 
-	all: function(table, cb){
-		var queryString = `SELECT * FROM ?`;
-		connection.query(queryString,[table], function (err, res){
-			if(err){
-				throw err;
-			}
-			//call back using sent data
-			cb(res)
-		})
+		all: function(table, cb){
+			var queryString = `SELECT * FROM ?`;
+			connection.query(queryString,[table], function (err, res){
+				if(err){
+					throw err;
+				}
+				//call back using sent data
+				cb(res)
+			})
+		}
+
+
+	//method that select with condition
+		select: function(table, condition, cb){
+			var queryString = `SELECT * FROM ? WHERE ?`;
+			connection.query(queryString,[table,condition], function(err,res){
+				if(err){
+					throw err;
+				}
+				//call back using sent data
+				cb(res)
+			})
+		}
+
+
+	//method that update with conditon
+		update: function(table, condition, value, cb){
+			var queryString = `UPDATE ? SET ? WHERE ?`
+			connection.query(queryString, [table, sequal(value)], function(err,res){
+				if(err){
+					throw err;
+				}
+				//call back using sent data
+				cb(res)
+
+			} )
+
+		}
+
+
+	//method that create object
+		create:function(table, columns,value, cb){
+			var queryString = `INSERT INTO ? (?) VALUES (?) `
+			connection.query(queryString, [table, columns, value], function(err,res){
+					if(err){
+					throw err;
+				}
+				//call back using sent data
+				cb(res)
+
+			})
+		}
 	}
 
-
-//method that select with condition
-	select: function(table, condition, cb){
-		var queryString = `SELECT * FROM ? WHERE ?`;
-		connection.query(queryString,[table,condition], function(err,res){
-			if(err){
-				throw err;
-			}
-			//call back using sent data
-			cb(res)
-		})
-	}
-
-
-//method that update with conditon
-	update: function(table, condition, value, cb){
-		
-	}
-}
+	module.exports = orm;
