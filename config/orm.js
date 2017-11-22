@@ -55,7 +55,7 @@ function sequl(data){
 	//method that update with conditon
 		update: function(table, condition, value, cb){
 			var queryString = `UPDATE ? SET ? WHERE ?`
-			connection.query(queryString, [table, sequal(value)], function(err,res){
+			var query = connection.query(queryString, [table, sequal(value), condition], function(err,res){
 				if(err){
 					throw err;
 				}
@@ -64,13 +64,15 @@ function sequl(data){
 
 			} )
 
+			console.log(query)
+
 		}
 
 
 	//method that create object
 		create:function(table, columns,value, cb){
 			var queryString = `INSERT INTO ? (?) VALUES (?) `
-			connection.query(queryString, [table, columns, value], function(err,res){
+			var query = connection.query(queryString, [table, columns, value], function(err,res){
 					if(err){
 					throw err;
 				}
@@ -78,6 +80,8 @@ function sequl(data){
 				cb(res)
 
 			})
+
+			console.log(query)
 		}
 	}
 
