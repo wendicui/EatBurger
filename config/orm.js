@@ -28,12 +28,13 @@ function sequl(data){
 //method that select all data
 
 		all: function(table, cb){
-			var queryString = `SELECT * FROM ?`;
-			connection.query(queryString,[table], function (err, res){
+			var queryString = `SELECT * FROM ${table}`;
+			connection.query(queryString,  function (err, res){
 				if(err){
 					throw err;
 				}
 				//call back using sent data
+				//console.log(res)
 				cb(res)
 			})
 		},

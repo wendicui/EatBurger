@@ -17,13 +17,33 @@
 
   </head>
   <body>
+    <!-- header -->
     <div class = "text-center container" id = "burgerLogo">
        <img src="/assets/img/burgerLogo.png">
        <h2 id = "title"> Eat-da-Burger</h2>
     </div>
 
-    {{{body}}}
 
+
+    <!-- add a burger form -->
+    <div class = "container" id = "add-burger">
+      <h4 class = "text-center">Add a Burger</h2>
+      <form class="create-form">
+
+        <div class="form-group">
+          <label for="burger">Burger Name:</label>
+          <input type="text" id="burger-input" name="name">
+        </div>
+
+        <button type="submit" id = "add">Add Burger</button>
+      </form>
+  </div>
+
+
+  <!-- new burger   -->
+   <div class = "container" id = "new-burger">
+     {{{body}}}
+   </div>
 
   </body>
 </html>
