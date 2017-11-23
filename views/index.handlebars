@@ -1,0 +1,10 @@
+<ul>
+  {{#each data}}
+    {{#unless devoured}}
+      <li>
+        {{>burger_name}}
+
+        <button class = "devour" data-id = "{{id}}" >
+          devour it </button>
+      </li>
+<ul>

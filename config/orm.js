@@ -1,4 +1,4 @@
-var connection = require('connection.js')
+var connection = require('./connection.js')
 
 //function change object to form or sql:
 function sequl(data){
@@ -36,7 +36,7 @@ function sequl(data){
 				//call back using sent data
 				cb(res)
 			})
-		}
+		},
 
 
 	// //method that select with condition
@@ -66,7 +66,7 @@ function sequl(data){
 
 			console.log(query)
 
-		}
+		},
 
 
 	//method that create object

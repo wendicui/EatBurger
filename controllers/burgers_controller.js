@@ -15,14 +15,14 @@ router.get("/", function (req,res){
   })
 })
 
-router.post("api/burgers", funtion(req,res){
+router.post("/api/burgers", function(req,res){
   var info = req.body;
-  burger.create(["burger_name"],info.name,function(result){
+  burger.create(["burger_name"],info.burger_name,function(result){
     res.status(200).end();
   });
 })
 
-router.put("api/burgers/:id",function(req,rest){
+router.put("/api/burgers/:id",function(req,rest){
   var target = req.param.id;
   var condition = `id = ${target}`;
   burger.update(condition, {devoured: true}, function (result){
@@ -34,3 +34,5 @@ router.put("api/burgers/:id",function(req,rest){
 
   })
 })
+
+module.exports = router;
