@@ -6,9 +6,9 @@ var burger = {
 		orm.all("burgers", cb)
 	}
 
-	select: function(condition, cb){
-		orm.select("burgers", condition, cb)
-	}
+	// select: function(condition, cb){
+	// 	orm.select("burgers", condition, cb)
+	// }
 
 	update:function(condition, value, cb){
 		orm.update("burgers", condition, value, cb)

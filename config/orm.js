@@ -2,7 +2,7 @@ var connection = require('connection.js')
 
 //function change object to form or sql:
 function sequl(data){
-//create array to pass in 
+//create array to pass in
 	var array = [];
 
 	 for(var key in data){
@@ -21,7 +21,7 @@ function sequl(data){
 }
 
 // //generate ? for create
-// 	function 
+// 	function
 
 	var orm = {
 
@@ -39,17 +39,17 @@ function sequl(data){
 		}
 
 
-	//method that select with condition
-		select: function(table, condition, cb){
-			var queryString = `SELECT * FROM ? WHERE ?`;
-			connection.query(queryString,[table,condition], function(err,res){
-				if(err){
-					throw err;
-				}
-				//call back using sent data
-				cb(res)
-			})
-		}
+	// //method that select with condition
+	// 	select: function(table, condition, cb){
+	// 		var queryString = `SELECT * FROM ? WHERE ?`;
+	// 		connection.query(queryString,[table,condition], function(err,res){
+	// 			if(err){
+	// 				throw err;
+	// 			}
+	// 			//call back using sent data
+	// 			cb(res)
+	// 		})
+	// 	}
 
 
 	//method that update with conditon
