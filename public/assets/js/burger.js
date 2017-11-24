@@ -1,18 +1,21 @@
-$("#add").on("click", function(event){
-  //preventDefault
-  event.preventDefault();
+$(function(){
+  $("#add").on("click", function(event){
+    //preventDefault
+    event.preventDefault();
+    var newOne = $("#burger-input").val().trim()
 
-  var newburger = {
-    name:${"#burger-input"}.val().trim()
-  }
+    console.log(newOne)
 
-  //send the post request
-  $.ajax("/api/burgers",{
-    type:"POST",
-    data:newburger
-  }).then(
-    location.reload();
-  )
+    var newburger = {
+      name:newOne
+    }
 
-
+    //send the post request
+    $.ajax("/api/burgers",{
+      type:"POST",
+      data:newburger
+    }).then(function(){
+          location.reload();
+    })
+  })
 })

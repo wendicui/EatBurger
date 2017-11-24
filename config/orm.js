@@ -72,17 +72,18 @@ function sequl(data){
 
 	//method that create object
 		create:function(table, columns,value, cb){
-			var queryString = `INSERT INTO ? (?) VALUES (?) `
-			var query = connection.query(queryString, [table, columns, value], function(err,res){
+			var queryString = `INSERT INTO ${table} (${columns}) VALUES (?) `
+			var query = connection.query(queryString, [ value], function(err,res){
 					if(err){
 					throw err;
 				}
+				console.log(res)
 				//call back using sent data
 				cb(res)
 
 			})
 
-			console.log(query)
+			console.log("this is "+ query.sql)
 		}
 	}
 
