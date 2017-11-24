@@ -1,4 +1,7 @@
+//wait till all load?
 $(function(){
+
+  //add burger
   $("#add").on("click", function(event){
     //preventDefault
     event.preventDefault();
@@ -16,6 +19,21 @@ $(function(){
       data:newburger
     }).then(function(){
           location.reload();
+    })
+  })
+
+  //devour burgers
+  $(".devour").on("click", function(event){
+    event.preventDefault;
+    var idChange = $(this).data("id");
+  //  console.log(idChange);
+
+    //send put request
+    $.ajax("/api/burgers/" + idChange, {
+      type:"PUT",
+
+    }).then(function(){
+      location.reload();
     })
   })
 })

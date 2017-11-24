@@ -7,7 +7,7 @@ function sequl(data){
 
 	 for(var key in data){
 
-	 	var value = data.key;
+	 	var value = data[key];
 //check whether should be '' around value
 // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
  // e.g. {sleepy: true} => ["sleepy=true"]
@@ -17,6 +17,8 @@ function sequl(data){
 	 	}
 	 	array.push(`${key} = ${value}`)
 	 }
+
+	 return array;
 
 }
 
@@ -55,8 +57,11 @@ function sequl(data){
 
 	//method that update with conditon
 		update: function(table, condition, value, cb){
-			var queryString = `UPDATE ? SET ? WHERE ?`
-			var query = connection.query(queryString, [table, sequal(value), condition], function(err,res){
+			//console.log(value)
+			var val = sequl(value);
+			//console.log(val);
+			var queryString = `UPDATE ${table} SET ${val} WHERE ${condition}`
+			var query = connection.query(queryString, function(err,res){
 				if(err){
 					throw err;
 				}
@@ -65,7 +70,7 @@ function sequl(data){
 
 			} )
 
-			console.log(query)
+			console.log(query.sql)
 
 		},
 
