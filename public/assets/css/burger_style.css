@@ -1,0 +1,37 @@
+body{
+  background-color:#d7e3b5
+}
+
+h2,h4,label{
+  color: white;
+}
+
+li{
+  color:white
+}
+
+button{
+  background: red;
+  color: white;
+  border-radius: 5%;
+  font-size: 8px;
+
+}
+
+.form{
+  margin-bottom: 2%;
+}
+
+#logo{
+  height:25%;
+  width:25%;
+  margin-bottom: 2%;
+}
+
+#burgerLogo{
+  margin-bottom: 3%;
+}
+
+#new-burger{
+  margin-bottom: 5%;
+}

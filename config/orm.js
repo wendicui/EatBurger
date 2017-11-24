@@ -5,9 +5,9 @@ function sequl(data){
 //create array to pass in
 	var array = [];
 
-	 for(var key in data){
+	 for(var keys in data){
 
-	 	var value = data[key];
+	 	var value = data[keys];
 //check whether should be '' around value
 // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
  // e.g. {sleepy: true} => ["sleepy=true"]
@@ -15,7 +15,7 @@ function sequl(data){
 	 	if (typeof value === "string" && value.indexOf(" ") >=0){
 	 		value = "'" + value + "'"
 	 	}
-	 	array.push(`${key} = ${value}`)
+	 	array.push(`${keys} = ${value}`)
 	 }
 
 	 return array;

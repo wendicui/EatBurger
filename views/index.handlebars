@@ -1,19 +1,20 @@
-<div class = "float-left" id = "new-burgers">
+<div class = "col-sm-5 col-md-5 col-lg-5 container" id = "new-burgers">
   <ul>
     {{#each data}}
       {{#unless devoured}}
         <li>
-          {{burger_name}}
-
           <button class = "devour" data-id = "{{id}}" >
             devour it </button>
+
+          {{burger_name}}
+
         </li>
       {{/unless}}
     {{/each}}
   </ul>
 </div>
 
-<div class = "float-right" id = "eaten-burgers">
+<div class = "col-sm-5 col-md-5 col-lg-5 container" id = "eaten-burgers">
   <ul>
     {{#each data}}
       {{#if devoured}}
